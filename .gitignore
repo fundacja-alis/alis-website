@@ -8,3 +8,13 @@ tmp/
 .codex/
 .agents/
 *.log
+
+# Local credentials and private key material
+*.pem
+*.key
+*.p12
+*.pfx
+.npmrc
+.netrc
+credentials*.json
+service-account*.json
