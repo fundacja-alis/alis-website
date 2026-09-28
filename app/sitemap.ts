@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/data/site";
+import { siteUrl, indexable } from "@/data/site";
 import { publishedProjects as projects } from "@/data/projects";
 import { publishedNews as news } from "@/data/news";
 export default function sitemap(): MetadataRoute.Sitemap {
-  if (!siteUrl) return [];
+  if (!indexable) return [];
   return [
-    { url: siteUrl, priority: 1 },
+    { url: `${siteUrl}/`, priority: 1 },
     { url: `${siteUrl}/dokumenty`, priority: 0.3 },
     { url: `${siteUrl}/dokumenty/statut`, priority: 0.3 },
     ...projects.map((p) => ({
@@ -14,7 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...news.map((n) => ({
       url: `${siteUrl}/aktualnosci/${n.slug}`,
-      lastModified: n.date,
       priority: 0.6,
     })),
   ];

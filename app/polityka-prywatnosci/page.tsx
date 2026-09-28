@@ -1,8 +1,10 @@
+import { pageMetadata } from "@/utils/seo";
 import { site } from "@/data/site";
-export const metadata = {
-  title: "Informacje o prywatności",
-  robots: { index: false, follow: true },
-};
+export const metadata = { ...pageMetadata({
+  "title": "Informacje o prywatności",
+  "description": "Informacje o prywatności, formularzu kontaktowym i przetwarzaniu danych na stronie Fundacji Rozwoju ALIS.",
+  "path": "/polityka-prywatnosci"
+}), robots: { index: false, follow: true } };
 export default function Privacy() {
   return (
     <main id="main" className="shell section document">

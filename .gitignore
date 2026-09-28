@@ -18,3 +18,19 @@ tmp/
 .netrc
 credentials*.json
 service-account*.json
+
+# Local assistant and editor settings
+.claude/
+.idea/
+.vscode/
+
+# Build and test output
+out/
+coverage/
+playwright-report/
+test-results/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini

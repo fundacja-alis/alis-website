@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/utils/seo";
+import { JsonLd } from "@/components/json-ld";
+import { registry } from "@/data/foundation";
 import Link from "next/link";
 import Image from "next/image";
 import { areas } from "@/data/areas";
@@ -7,24 +9,26 @@ import { publishedNews as news } from "@/data/news";
 import { site, siteUrl } from "@/data/site";
 import { involvement } from "@/data/involvement";
 import { ContactForm } from "@/components/contact-form";
-export const metadata: Metadata = {
-  alternates: { canonical: siteUrl ? `${siteUrl}/` : undefined },
-};
+export const metadata = pageMetadata({ title: site.title, description: site.description, path: "/" });
 const Arrow = () => <span aria-hidden="true">↗</span>;
 export default function Home() {
   return (
     <main id="main">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@graph": [
+          {
             "@type": "NGO",
+            "@id": `${siteUrl}/#organization`,
             name: site.name,
             description: site.description,
             foundingDate: "2026-04-29",
-            ...(siteUrl ? { url: siteUrl } : {}),
+            url: `${siteUrl}/`,
+            logo: `${siteUrl}/images/logo.webp`,
+            sameAs: [site.facebook],
             email: site.email,
+            taxID: registry.nip,
+            identifier: { "@type": "PropertyValue", propertyID: "KRS", value: registry.krs },
             address: {
               "@type": "PostalAddress",
               streetAddress: site.address,
@@ -32,9 +36,18 @@ export default function Home() {
               postalCode: "33-100",
               addressCountry: "PL",
             },
-          }).replace(/</g, "\\u003c"),
-        }}
-      />
+          },
+          {
+            "@type": "WebSite",
+            "@id": `${siteUrl}/#website`,
+            url: `${siteUrl}/`,
+            name: site.name,
+            alternateName: "Fundacja ALIS",
+            inLanguage: "pl-PL",
+            publisher: { "@id": `${siteUrl}/#organization` },
+          },
+        ],
+      }} />
       <section className="hero shell">
         <Image className="hero-image" src="/images/hero-sculpture.webp" alt="" fill priority sizes="100vw" />
         <div className="hero-copy">

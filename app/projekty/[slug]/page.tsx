@@ -1,23 +1,21 @@
+import { pageMetadata, breadcrumbSchema } from "@/utils/seo";
+import { JsonLd } from "@/components/json-ld";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { publishedProjects as projects } from "@/data/projects";
-import { siteUrl } from "@/data/site";
+
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  return project
-    ? {
-        title: project.title,
-        description: project.excerpt,
-        alternates: {
-          canonical: siteUrl ? `${siteUrl}/projekty/${slug}` : undefined,
-        },
-        openGraph: { title: project.title, description: project.excerpt },
-      }
-    : { title: "Nie znaleziono projektu" };
+  if (!project) notFound();
+  return pageMetadata({
+    title: project.title,
+    description: project.excerpt,
+    path: `/projekty/${slug}`,
+  });
 }
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
@@ -25,6 +23,7 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
   return (
     <main id="main" className="shell section document">
+      <JsonLd data={breadcrumbSchema([{ name: "Strona główna", path: "/" }, { name: project.title, path: `/projekty/${project.slug}` }])} />
       <Link href="/#projekty" className="text-link">
         ← Wszystkie projekty
       </Link>

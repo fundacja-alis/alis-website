@@ -49,3 +49,12 @@ app/globals.css zawiera bazowy układ, app/premium.css spójne style identyfikac
 - Hero: dekoracyjna grafika marki wygenerowana imagegen, prompt w public/images/hero-sculpture.prompt.txt; nie przedstawia rzeczywistej placówki.
 
 Przed aktywacją formularza należy uzupełnić pełną informację o przetwarzaniu danych, skonfigurować wysyłkę i sprawdzić rzeczywiste doręczenie. Kontrola wizualna w przeglądarce wymaga dostępnej sesji Browser.
+
+## SEO
+
+- `utils/seo.ts` zapewnia canonical, osobne tytuły i opisy Open Graph/Twitter oraz bezpieczne kodowanie JSON-LD.
+- Strona główna opisuje fundację (NGO) i witrynę (WebSite), w tym logo, dane kontaktowe, KRS, NIP i oficjalny profil Facebooka. Podstrony mają BreadcrumbList, aktualności także Article.
+- `SITE_INDEXABLE=true` ustaw na docelowym hostingu przed produkcyjnym buildem. Przy wyłączonym indeksowaniu strony mają noindex, robots.txt blokuje roboty, a sitemap.xml jest pusta. Informacje o prywatności pozostają noindex i poza sitemapą.
+- Sitemap zawiera tylko publiczne strony i opublikowane wpisy; nie przypisuje daty publikacji jako daty ostatniej aktualizacji.
+- Po wdrożeniu dodaj sitemap.xml w Google Search Console i sprawdź stronę główną w Rich Results Test.
+- Testy SEO uruchamiają się przez `npm test`. Lokalne ustawienia asystentów, edytorów, sekrety oraz wyniki buildów i testów są ignorowane przez Git.

@@ -3,6 +3,7 @@ export const site = {
   title: "Fundacja Rozwoju ALIS | Edukacja, zdrowie psychiczne i nowe technologie",
   description:
     "Fundacja Rozwoju ALIS w Tarnowie działa w obszarze edukacji, zdrowia psychicznego, nowych technologii i rozwoju społecznego. Poznaj nasze działania, projekty i możliwości współpracy.",
+  facebook: "https://www.facebook.com/fundacjarozwojualis/",
   email: "biuro@fundacja-alis.pl",
   address: "ul. Bernardyńska 25/2",
   city: "33-100 Tarnów",

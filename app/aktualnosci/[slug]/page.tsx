@@ -1,28 +1,22 @@
+import { pageMetadata, breadcrumbSchema } from "@/utils/seo";
+import { JsonLd } from "@/components/json-ld";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { publishedNews as news } from "@/data/news";
-import { siteUrl } from "@/data/site";
+import { site, siteUrl } from "@/data/site";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = news.find((n) => n.slug === slug);
-  return item
-    ? {
-        title: item.title,
-        description: item.excerpt,
-        alternates: {
-          canonical: siteUrl ? `${siteUrl}/aktualnosci/${slug}` : undefined,
-        },
-        openGraph: {
-          type: "article",
-          title: item.title,
-          description: item.excerpt,
-          publishedTime: item.date,
-        },
-      }
-    : { title: "Nie znaleziono aktualności" };
+  if (!item) notFound();
+  return pageMetadata({
+    title: item.title,
+    description: item.excerpt,
+    path: `/aktualnosci/${slug}`,
+    publishedTime: item.date,
+  });
 }
 export default async function NewsPage({ params }: Props) {
   const { slug } = await params;
@@ -30,6 +24,25 @@ export default async function NewsPage({ params }: Props) {
   if (!item) notFound();
   return (
     <main id="main" className="shell section document">
+      <JsonLd data={breadcrumbSchema([{ name: "Strona główna", path: "/" }, { name: item.title, path: `/aktualnosci/${item.slug}` }])} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": `${siteUrl}/aktualnosci/${item.slug}#article`,
+        headline: item.title,
+        description: item.excerpt,
+        datePublished: item.date,
+        inLanguage: "pl-PL",
+        mainEntityOfPage: `${siteUrl}/aktualnosci/${item.slug}`,
+        publisher: {
+          "@type": "NGO",
+          "@id": `${siteUrl}/#organization`,
+          name: site.name,
+          url: siteUrl,
+          logo: { "@type": "ImageObject", url: `${siteUrl}/images/logo.webp` },
+        },
+        ...(item.image ? { image: new URL(item.image, siteUrl).href } : {}),
+      }} />
       <Link href="/#aktualnosci" className="text-link">
         ← Aktualności
       </Link>

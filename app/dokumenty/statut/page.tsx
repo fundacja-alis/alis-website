@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
+import { pageMetadata, breadcrumbSchema } from "@/utils/seo";
+import { JsonLd } from "@/components/json-ld";
 import Link from "next/link";
-import { siteUrl } from "@/data/site";
 import { statuteChapters, statuteVersion } from "@/data/statute";
 
-export const metadata: Metadata = {
-  title: "Statut Fundacji",
-  description: "Treść statutu Fundacji Rozwoju ALIS: cele, zasady działania, organy i sposób reprezentacji. Tekst jednolity.",
-  alternates: { canonical: `${siteUrl}/dokumenty/statut` },
-};
+export const metadata = pageMetadata({
+  "title": "Statut Fundacji",
+  "description": "Treść statutu Fundacji Rozwoju ALIS: cele, zasady działania, organy i sposób reprezentacji. Tekst jednolity.",
+  "path": "/dokumenty/statut"
+});
 
 export default function StatutePage() {
   return (
     <main id="main" className="shell section statute-page">
+      <JsonLd data={breadcrumbSchema([{"name":"Strona główna","path":"/"},{"name":"Dokumenty Fundacji","path":"/dokumenty"},{"name":"Statut Fundacji","path":"/dokumenty/statut"}])} />
       <header className="statute-header">
         <Link className="text-link" href="/dokumenty">← Dokumenty Fundacji</Link>
         <p className="eyebrow">FUNDACJA ROZWOJU ALIS</p>
