@@ -1,3 +1,4 @@
+import { navigation } from "@/data/navigation";
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -42,7 +43,7 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Przejdź do treści
         </a>
-        <Header />
+        <Header navigation={navigation} />
         {children}
         <Footer />
       </body>

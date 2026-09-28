@@ -1,10 +1,17 @@
-export const documentCategories = ["Statut Fundacji", "Dokumenty rejestrowe", "Sprawozdania", "Regulaminy", "Inne dokumenty publiczne"] as const;
 export type FoundationDocument = {
   title: string;
-  category: (typeof documentCategories)[number];
-  /** Lokalny plik w public/dokumenty, np. /dokumenty/statut.pdf. */
+  description: string;
+  category: string;
   href: string;
   format: string;
+  download?: boolean;
 };
-// Dodawaj wyłącznie zatwierdzone dokumenty, których pliki istnieją w public/dokumenty.
-export const documents: FoundationDocument[] = [];
+// Dodaj kolejne pozycje dopiero po udostępnieniu dokumentu.
+// Pliki do pobrania umieszczaj w public/dokumenty i ustaw download: true.
+export const documents: FoundationDocument[] = [{
+  title: "Statut Fundacji",
+  description: "Cele, zasady działania, organy i sposób reprezentacji Fundacji. Tekst jednolity.",
+  category: "Statut",
+  href: "/dokumenty/statut",
+  format: "HTML",
+}];

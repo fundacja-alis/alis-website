@@ -2,9 +2,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { navigation } from "@/data/site";
 import { SiteSearch } from "@/components/site-search";
-export function Header() {
+export function Header({ navigation }: { navigation: [string, string][] }) {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const close = (e: KeyboardEvent) => {

@@ -1,4 +1,6 @@
 export type News = {
+  /** Wpis widoczny na stronie dopiero po zatwierdzeniu do publikacji. */
+  published: boolean;
   title: string;
   slug: string;
   excerpt: string;
@@ -22,3 +24,5 @@ export type News = {
   imageAlt?: string;
 };
 export const news: News[] = [];
+
+export const publishedNews = news.filter((item) => item.published);

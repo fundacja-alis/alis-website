@@ -1,10 +1,9 @@
 import { areas } from "@/data/areas";
 import { involvement } from "@/data/involvement";
-import { news } from "@/data/news";
-import { projects } from "@/data/projects";
+import { publishedNews as news } from "@/data/news";
+import { publishedProjects as projects } from "@/data/projects";
 import { site } from "@/data/site";
 import { statuteChapters } from "@/data/statute";
-import { authorities } from "@/data/foundation";
 
 export type SearchEntry = { section: string; title: string; href: string; text: string };
 
@@ -32,13 +31,7 @@ export const searchIndex: SearchEntry[] = [
     section: "O Fundacji",
     title: "Rozwój nie ma jednej ścieżki",
     href: "/#o-nas",
-    text: "Fundacja Rozwoju ALIS powstała w Tarnowie w 2026 roku, aby tworzyć rozwiązania odpowiadające na rzeczywiste potrzeby ludzi i społeczności. Łączymy edukację, wsparcie psychiczne, nowe technologie i rozwój kompetencji.",
-  },
-  {
-    section: "O Fundacji",
-    title: "Władze Fundacji",
-    href: "/#wladze",
-    text: authorities.map((body) => `${body.name}: ${body.members.map((m) => ("role" in m ? `${m.name} (${m.role})` : m.name)).join(", ")}.`).join(" "),
+    text: "Fundacja Rozwoju ALIS działa od 2026 roku w Tarnowie. Prowadzimy placówki, rozwijamy własne inicjatywy i tworzymy partnerstwa. MOS Rozwiń Skrzydła wraz ze szkołą podstawową oraz Zespół Szkół Niepublicznych w Tarnowie.",
   },
   ...areas.flatMap((area): SearchEntry[] => [
     { section: "Obszary działania", title: area.title, href: "/#dzialamy", text: [area.short, ...area.description, area.topics.join(", ")].join(" ") },

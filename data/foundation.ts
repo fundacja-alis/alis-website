@@ -4,13 +4,3 @@ export const registry = {
   nip: "8733308821",
   regon: "544970852",
 };
-export const authorities = [
-  {
-    name: "Zarząd Fundacji",
-    members: [{ name: "Dawid Mikosiński", role: "Prezes Zarządu" }],
-  },
-  {
-    name: "Rada Fundacji",
-    members: [{ name: "Konrad Czosnek" }, { name: "Agnieszka Czosnek" }, { name: "Kinga Mikosińska" }],
-  },
-];

@@ -1,4 +1,6 @@
 export type Project = {
+  /** Wpis widoczny na stronie dopiero po zatwierdzeniu do publikacji. */
+  published: boolean;
   title: string;
   slug: string;
   excerpt: string;
@@ -18,3 +20,5 @@ export type Project = {
 };
 // Add only projects confirmed by the Foundation. No demo records are published.
 export const projects: Project[] = [];
+
+export const publishedProjects = projects.filter((item) => item.published);

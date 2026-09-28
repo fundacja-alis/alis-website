@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/data/site";
-import { projects } from "@/data/projects";
-import { news } from "@/data/news";
+import { publishedProjects as projects } from "@/data/projects";
+import { publishedNews as news } from "@/data/news";
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!siteUrl) return [];
   return [

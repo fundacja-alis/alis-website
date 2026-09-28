@@ -14,10 +14,11 @@ export default function Privacy() {
       <h2>Kontakt</h2>
       <p>
         Link do e-maila otwiera aplikację wybraną przez
-        użytkownika. Wiadomości nie są wysyłane za pośrednictwem tej strony.
+        użytkownika. W tym przypadku wiadomość wysyłasz we własnej aplikacji pocztowej.
       </p>
       <h2>Formularz kontaktowy</h2>
-      <p>Formularz w sekcji „Współpraca” jest obecnie dostępny bez funkcji wysyłania wiadomości. Wprowadzone dane są sprawdzane wyłącznie w przeglądarce; strona nie przesyła ich na serwer ani nie zapisuje. Aby się skontaktować, skorzystaj z adresu e-mail Fundacji.</p>
+      <p>Jeśli formularz jest dostępny, po kliknięciu „Wyślij wiadomość” podane dane trafiają do Fundacji na adres biuro@fundacja-alis.pl za pośrednictwem usługi Resend. Dane obejmują temat, imię i nazwisko, e-mail, wiadomość oraz podane dobrowolnie firmę lub organizację i telefon. Służą obsłudze zapytania i udzieleniu odpowiedzi.</p>
+      <p>Treść formularza nie jest zapisywana w bazie strony. W celu ograniczenia nadużyć w Supabase przechowywane są liczniki zgłoszeń i identyfikator utworzony z adresu e-mail przy użyciu klucza serwera. Wpisy starsze niż dobę są usuwane przy kolejnych próbach wysyłki. Wiadomości pozostają w systemie pocztowym Fundacji i u dostawcy wysyłki zgodnie z ustalonymi zasadami przechowywania.</p>
       <h2>Dane techniczne</h2>
       <p>
         Udostępnienie strony wymaga połączenia z dostawcą hostingu. W ramach

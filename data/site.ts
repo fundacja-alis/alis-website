@@ -9,12 +9,3 @@ export const site = {
 };
 export const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://fundacja-alis.pl").origin;
 export const indexable = !!siteUrl && process.env.SITE_INDEXABLE === "true";
-export const navigation = [
-  ["O Fundacji", "/#o-nas"],
-  ["Obszary działania", "/#dzialamy"],
-  ["Projekty", "/#projekty"],
-  ["Aktualności", "/#aktualnosci"],
-  ["Współpraca", "/#wspolpraca"],
-  ["Dokumenty", "/dokumenty"],
-  ["Kontakt", "/#kontakt"],
-];

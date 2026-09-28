@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="footer footer-compact">
       <div className="shell footer-contact">
-        <address><strong>{site.name}</strong><span>{site.address}</span><span>{site.city}</span><a href={`mailto:${site.email}`}>{site.email}</a><span className="footer-registry">KRS {registry.krs} · NIP {registry.nip} · REGON {registry.regon}</span></address>
+        <address><strong>{site.name}</strong><span>{site.address}</span><span>{site.city}</span><a href={`mailto:${site.email}`}>{site.email}</a><span className="footer-registry">KRS {registry.krs} · NIP {registry.nip} · REGON {registry.regon}</span><span>Zarząd Fundacji — Prezes Dawid Mikosiński</span></address>
         <nav className="footer-links" aria-label="Informacje o fundacji">
           <Link href="/dokumenty">Dokumenty</Link>
           <Link href="/dokumenty/statut">Statut</Link>
