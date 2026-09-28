@@ -6,6 +6,7 @@ import { projects } from "@/data/projects";
 import { news } from "@/data/news";
 import { site, siteUrl } from "@/data/site";
 import { involvement } from "@/data/involvement";
+import { authorities } from "@/data/foundation";
 import { ContactForm } from "@/components/contact-form";
 export const metadata: Metadata = {
   alternates: { canonical: siteUrl ? `${siteUrl}/` : undefined },
@@ -87,6 +88,12 @@ export default function Home() {
               <p>Chcemy budować rozwiązania, które mają praktyczne znaczenie i pozostawiają trwały efekt.</p>
               <Link href="/dokumenty/statut" className="text-link">Przeczytaj statut Fundacji <Arrow /></Link>
             </div>
+          </div>
+          <div id="wladze" className="authorities">
+            {authorities.map((body) => <section key={body.name} aria-labelledby={`organ-${body.name}`}>
+              <h3 id={`organ-${body.name}`}>{body.name}</h3>
+              <ul>{body.members.map((member) => <li key={member.name}>{member.name}{"role" in member && <span>{member.role}</span>}</li>)}</ul>
+            </section>)}
           </div>
         </div>
       </section>

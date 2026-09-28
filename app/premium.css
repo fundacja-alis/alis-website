@@ -108,3 +108,12 @@ body{font-family:'DM Sans',Arial,sans-serif}.shell{max-width:1440px;padding-inli
 @media(max-width:800px){.statute-layout{grid-template-columns:1fr;gap:36px}.statute-toc{position:static}.statute-toc ol{columns:2;column-gap:32px}.statute-toc li{break-inside:avoid}.statute-header{margin-bottom:32px}}
 @media(max-width:560px){.statute-toc ol{columns:1}.statute-chapter h2{font-size:35px}.statute-chapter>p:not(.eyebrow){font-size:14px}.statute-chapter{margin-bottom:40px}}
 @media print{.statute-toc,.statute-header>.text-link,.statute-body>.text-link{display:none}.statute-layout{display:block}.statute-page{padding:0}.statute-chapter{break-inside:auto}.statute-chapter h2,.statute-chapter h3{break-after:avoid}}
+/* Foundation authorities in the About section; registry numbers in the footer. */
+.authorities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 55px;margin-top:60px}
+.authorities section{border-top:1px solid var(--line);padding-top:18px}
+.authorities h3{font-family:var(--serif);font-size:26px;font-weight:500;margin:0 0 12px}
+.authorities ul{list-style:none;padding:0;margin:0}
+.authorities li{font-size:16px;line-height:1.6;margin-bottom:8px}
+.authorities li span{display:block;font-size:12px;color:var(--muted)}
+.footer-contact address .footer-registry{margin-top:7px;opacity:.7}
+@media(max-width:560px){.authorities{grid-template-columns:1fr}}

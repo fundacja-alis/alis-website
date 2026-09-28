@@ -71,6 +71,6 @@ Do uruchomienia rzeczywistej wysyłki potrzeba: endpointu kontaktowego z walidac
 
 ## Statut — wersja tekstowa
 
-Treść z pliku użytkownika `alis_statut.pdf` jest dostępna pod `/dokumenty/statut`, z odnośnikami ze strony Dokumenty i stopki. Oryginalnego PDF ani skanów nie umieszczono w public. Transkrypcja obejmuje 8 rozdziałów i paragrafy 1–32, w tym końcową stronę odczytaną ze skanu. Wersja: tekst jednolity.
+Treść z pliku użytkownika `alis_statut.pdf` jest dostępna pod `/dokumenty/statut`, z odnośnikami ze strony Dokumenty i stopki. Oryginalnego PDF ani skanów nie umieszczono w public. Transkrypcja obejmuje 8 rozdziałów i paragrafy 1–32, w tym końcową stronę odczytaną ze skanu. Wersja: tekst jednolity. Władze fundacji są w sekcji O Fundacji na stronie głównej, a KRS, NIP i REGON w stopce (dane z KRS, bez PESEL i bez PDF odpisu).
 
 Usunięto wyłącznie techniczne podziały stron, powtarzane odstępy, obraz podpisu i prywatny adres fundatora (z jawną adnotacją). Zachowano brzmienie źródła, jego literówki, powtórzony ustęp 2 w § 21, przeskok numeracji z 41 do 44 w § 7, odwołanie do § 35 w § 27 oraz kody działalności bez aktualizowania. Numerację punktów sklejonych w PDF rozdzielono dla czytelności. Nie dokonano prawnej korekty statutu.
