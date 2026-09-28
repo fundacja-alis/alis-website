@@ -8,7 +8,14 @@ export type News = {
     | "Edukacja"
     | "Społeczeństwo"
     | "Technologia"
-    | "Fundacja";
+    | "Fundacja"
+    | "MOS"
+    | "ZSN"
+    | "Partnerstwa"
+    | "Warsztaty"
+    | "Zdrowie psychiczne"
+    | "Finansowanie"
+    | "Relacje";
   date: string;
   body: string[];
   image?: string;

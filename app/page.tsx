@@ -5,7 +5,8 @@ import { areas } from "@/data/areas";
 import { projects } from "@/data/projects";
 import { news } from "@/data/news";
 import { site, siteUrl } from "@/data/site";
-import { involvement, inquiryHref } from "@/data/involvement";
+import { involvement } from "@/data/involvement";
+import { ContactForm } from "@/components/contact-form";
 export const metadata: Metadata = {
   alternates: { canonical: siteUrl ? `${siteUrl}/` : undefined },
 };
@@ -46,15 +47,16 @@ export default function Home() {
             <span>skrzydła.</span>
           </h1>
           <p className="hero-subtitle">Ludzi. Idei. Społeczności.</p>
-          <p className="hero-description">
-            Tworzymy i wspieramy inicjatywy, które pomagają ludziom rozwijać
-            możliwości, zdobywać kompetencje i budować lepszą przyszłość.
-          </p>
+          <div className="hero-description">
+            <p>Fundacja Rozwoju ALIS tworzy i rozwija inicjatywy, które pomagają ludziom lepiej wykorzystywać swój potencjał.</p>
+            <p>Działamy na styku edukacji, zdrowia psychicznego, nowych technologii i rozwoju społecznego. Prowadzimy placówki, realizujemy własne projekty, współpracujemy ze specjalistami, instytucjami i biznesem oraz szukamy nowych rozwiązań odpowiadających na rzeczywiste potrzeby ludzi i społeczności.</p>
+            <p>Łączymy doświadczenie, wiedzę i nowe technologie z praktycznym działaniem.</p>
+          </div>
           <div className="actions">
             <a className="button" href="#dzialamy">
               Poznaj nasze działania <Arrow />
             </a>
-            <a className="text-link" href="#dolacz">
+            <a className="text-link" href="#wspolpraca">
               Znajdź swoje miejsce <Arrow />
             </a>
           </div>
@@ -62,8 +64,7 @@ export default function Home() {
         <div className="hero-art" aria-hidden="true"><span>PRZESTRZEŃ DLA MOŻLIWOŚCI</span></div>
         <div className="hero-bottom">
           <span>
-            Edukacja <i /> Człowiek <i /> Technologie <i /> Społeczność <i />{" "}
-            Rozwój
+            Edukacja <i /> Zdrowie psychiczne <i /> Technologie <i /> Rozwój społeczny
           </span>
           <a href="#o-nas">
             Poznaj ALIS <span aria-hidden="true">↓</span>
@@ -79,38 +80,15 @@ export default function Home() {
             jednej ścieżki.
           </h2>
           <div className="about-columns">
-            <p className="lead">
-              Łączymy ludzi, wiedzę i środowiska, które często funkcjonują
-              osobno.
-            </p>
+            <p className="lead">Fundacja Rozwoju ALIS powstała w Tarnowie w 2026 roku, aby tworzyć rozwiązania odpowiadające na rzeczywiste potrzeby ludzi i społeczności.</p>
             <div>
-              <p>
-                Fundacja Rozwoju ALIS powstała w Tarnowie w 2026 roku. Tworzymy
-                i wspieramy przedsięwzięcia, które pomagają ludziom rozwijać
-                swoje możliwości.
-              </p>
-              <p>
-                Od edukacji i wsparcia psychologicznego, przez rozwój
-                kompetencji i nowe technologie, po inicjatywy społeczne,
-                zawodowe i lokalne. Wierzymy, że każdy kolejny krok może
-                otworzyć coś ważnego.
-              </p>
+              <p>Łączymy edukację, wsparcie psychiczne, nowe technologie i rozwój kompetencji. Interesują nas zarówno duże, długofalowe przedsięwzięcia, jak i projekty rozwiązujące konkretne problemy.</p>
+              <p>Tworzymy własne inicjatywy, prowadzimy placówki, współpracujemy ze specjalistami, organizacjami, instytucjami publicznymi i biznesem.</p>
+              <p>Chcemy budować rozwiązania, które mają praktyczne znaczenie i pozostawiają trwały efekt.</p>
+              <Link href="/dokumenty/statut" className="text-link">Przeczytaj statut Fundacji <Arrow /></Link>
             </div>
           </div>
         </div>
-      </section>
-      <section id="dolacz" className="shell involvement-section" aria-labelledby="involvement-title">
-        <div className="section-heading">
-          <div><p className="eyebrow">TWÓJ PIERWSZY KROK</p><h2 id="involvement-title">Jest tu miejsce<br />także dla Ciebie.</h2></div>
-          <p>Chcesz się rozwijać, dzielić wiedzą czy tworzyć coś wspólnie? Zacznij od tego, co jest Ci bliskie.</p>
-        </div>
-        <div className="involvement-grid">
-          {involvement.map((item) => <article key={item.id} id={item.id} className="involvement-card">
-            <p className="eyebrow">{item.label}</p><h3>{item.title}</h3><p>{item.description}</p>
-            <a className="text-link" href={inquiryHref(item.subject, item.body)}>{item.cta} <Arrow /></a>
-          </article>)}
-        </div>
-        <p className="involvement-note">Link otworzy wiadomość e-mail z podpowiedzią, co napisać. To początek rozmowy — nie zapis do programu.</p>
       </section>
       <section id="dzialamy" className="areas-section section">
         <div className="shell">
@@ -129,26 +107,36 @@ export default function Home() {
               Człowiek zawsze w centrum.
             </p>
           </div>
-          <div className="areas">
+          <div className="areas area-overview">
             {areas.map((area, i) => (
-              <details className="area" key={area.title}>
-                <summary>
+              <article className="area" key={area.title}>
+                <div className="area-heading">
                   <span className="area-number">0{i + 1}</span>
                   <h3>{area.title}</h3>
                   <span className="area-short">{area.short}</span>
-                  <span className="area-toggle" aria-hidden="true">
-                    +
-                  </span>
-                </summary>
+                </div>
                 <div className="area-body">
-                  <p>{area.description}</p>
+                  <div>{area.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
                   <ul>
                     {area.topics.map((topic) => (
                       <li key={topic}>{topic}</li>
                     ))}
                   </ul>
                 </div>
-              </details>
+                {area.facilities && <div className="facility-list">
+                  {area.facilities.map((facility) => <details className="facility-item" key={facility.href}>
+                    <summary className="facility-summary">
+                      <span className="facility-logo"><Image src={facility.logo} alt="" width={facility.logoWidth} height={facility.logoHeight} sizes="(max-width: 560px) 88px, 160px" /></span>
+                      <span className="facility-label"><span className="facility-title">{facility.title}</span><span className="facility-subtitle">{facility.subtitle}</span></span>
+                      <span className="facility-toggle" aria-hidden="true">+</span>
+                    </summary>
+                    <div className="facility-content">
+                      {facility.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                      <a className="text-link" href={facility.href} target="_blank" rel="noopener noreferrer">{facility.cta} <span className="sr-only">(otwiera nową kartę)</span><Arrow /></a>
+                    </div>
+                  </details>)}
+                </div>}
+              </article>
             ))}
           </div>
           <p className="areas-note">
@@ -161,12 +149,10 @@ export default function Home() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">03 / PROJEKTY ALIS</p>
-            <h2>To, co tworzymy.</h2>
+            <h2>Od pomysłu do działania.</h2>
           </div>
           <p>
-            Miejsca, programy i inicjatywy.
-            <br />
-            Nasza misja w praktyce.
+            Realizujemy własne inicjatywy oraz projekty we współpracy z instytucjami, organizacjami, specjalistami i biznesem. Koncentrujemy się na przedsięwzięciach, które odpowiadają na rzeczywiste potrzeby i prowadzą do konkretnej zmiany.
           </p>
         </div>
         {projects.length ? (
@@ -217,15 +203,14 @@ export default function Home() {
               </p>
             </div>
             <div className="empty-copy">
-              <span className="eyebrow">MIEJSCE NA KOLEJNE KROKI</span>
+              <span className="eyebrow">PROJEKTY I INICJATYWY</span>
               <h3>
-                Każda inicjatywa
+                Opisy projektów
                 <br />
-                zaczyna się od idei.
+                w przygotowaniu.
               </h3>
               <p>
-                Tutaj będziemy przedstawiać projekty Fundacji i inicjatywy
-                partnerskie — ich cele, przebieg i możliwości zaangażowania.
+                Tutaj znajdziesz informacje o konkretnych przedsięwzięciach Fundacji — ich celach, przebiegu i możliwościach zaangażowania.
               </p>
               <a className="text-link" href="#wspolpraca">
                 Porozmawiajmy o Twoim pomyśle <Arrow />
@@ -313,47 +298,18 @@ export default function Home() {
           </div>
         )}
       </section>
-      <section id="wspolpraca" className="cooperation section">
-        <div className="shell cooperation-grid">
-          <div>
-            <p className="eyebrow">05 / WSPÓŁPRACA</p>
-            <h2>
-              Zróbmy coś
-              <br />
-              <span>razem.</span>
-            </h2>
-            <p>
-              Dobre projekty rzadko powstają w pojedynkę. Jesteśmy otwarci na
-              współpracę z ludźmi i organizacjami, które chcą tworzyć rzeczy
-              wartościowe dla edukacji, rozwoju i społeczności.
-            </p>
-          </div>
-          <div className="cooperation-right">
-            <h3>
-              Różne doświadczenia.
-              <br />
-              Wspólne możliwości.
-            </h3>
-            <div className="partner-types">
-              {[
-                "Firmy i przedsiębiorcy",
-                "Szkoły i uczelnie",
-                "Specjaliści i eksperci",
-                "Organizacje społeczne",
-                "Samorządy i instytucje",
-                "Wolontariusze",
-                "Środowiska technologiczne",
-                "Darczyńcy",
-                "Lokalne społeczności",
-              ].map((x) => (
-                <span key={x}>{x}</span>
-              ))}
-            </div>
-            <a href={inquiryHref(involvement[2].subject, involvement[2].body)} className="text-link">
-              Opowiedz o swoim pomyśle <Arrow />
-            </a>
-          </div>
+      <section id="wspolpraca" className="shell involvement-section" aria-labelledby="involvement-title">
+        <span id="dolacz" className="section-anchor" aria-hidden="true" />
+        <div className="section-heading">
+          <div><p className="eyebrow">05 / WSPÓŁPRACA</p><h2 id="involvement-title">Zróbmy coś razem.</h2></div>
+          <p>Współpracujemy z osobami, firmami, instytucjami, uczelniami i organizacjami, które chcą razem z nami tworzyć wartościowe działania. Możesz dołączyć jako partner, wolontariusz, darczyńca albo wesprzeć konkretną inicjatywę.</p>
         </div>
+        <div className="involvement-grid">
+          {involvement.map((item) => <article key={item.id} id={item.id} className="involvement-card">
+            <p className="eyebrow">{item.label}</p><h3>{item.title}</h3><p>{item.description}</p>
+          </article>)}
+        </div>
+        <ContactForm />
       </section>
       <section id="kontakt" className="section shell contact">
         <div>

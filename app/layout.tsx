@@ -15,7 +15,7 @@ import "@fontsource/cormorant-garamond/latin-400-italic.css";
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
   title: {
-    default: "Fundacja Rozwoju ALIS — Rozwijamy skrzydła.",
+    default: site.title,
     template: "%s | Fundacja Rozwoju ALIS",
   },
   description: site.description,
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pl_PL",
     siteName: site.name,
-    title: "Rozwijamy skrzydła. Ludzi. Idei. Społeczności.",
+    title: site.title,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fundacja Rozwoju ALIS",
+    title: site.title,
     description: site.description,
   },
   robots: { index: indexable, follow: indexable },

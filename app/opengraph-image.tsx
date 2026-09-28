@@ -29,8 +29,8 @@ export default function Image() {
           Ludzi. Idei. Społeczności.
         </div>
       </div>
-      <div style={{ display: "flex", fontSize: 18, letterSpacing: 2 }}>
-        EDUKACJA · CZŁOWIEK · TECHNOLOGIE · SPOŁECZNOŚĆ · ROZWÓJ
+      <div style={{ display: "flex", fontSize: 16, letterSpacing: 1 }}>
+        EDUKACJA · ZDROWIE PSYCHICZNE · TECHNOLOGIE · ROZWÓJ SPOŁECZNY
       </div>
     </div>,
     size,
