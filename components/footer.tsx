@@ -20,7 +20,6 @@ export function Footer() {
             Facebook
           </a>
           <Link href="/dokumenty">Dokumenty</Link>
-          <Link href="/dokumenty/statut">Statut</Link>
           <Link href="/polityka-prywatnosci">Polityka prywatności</Link>
         </nav>
       </div>
