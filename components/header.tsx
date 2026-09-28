@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { navigation } from "@/data/site";
+import { SiteSearch } from "@/components/site-search";
 export function Header() {
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -35,6 +36,8 @@ export function Header() {
             Fundacja Rozwoju<strong>ALIS</strong>
           </span>
         </Link>
+        <div className="header-tools">
+        <SiteSearch />
         <button
           id="menu-button"
           className="menu-button"
@@ -56,6 +59,7 @@ export function Header() {
             </Link>
           ))}
         </nav>
+        </div>
       </div>
     </header>
   );
