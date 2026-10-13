@@ -1,4 +1,5 @@
-type Facility = { title: string; body: string[]; cta: string; href: string; logo: string; logoWidth: number; logoHeight: number; subtitle: string };
+type FacilityEvent = { label: string; title: string; body: string[]; details: string; note: string; cta: string; href: string };
+type Facility = { title: string; body: string[]; cta?: string; href?: string; logo: string; logoWidth: number; logoHeight: number; subtitle: string; event?: FacilityEvent };
 type Area = { title: string; short: string; description: string[]; topics: string[]; facilities?: Facility[] };
 export const areas: Area[] = [
   {
@@ -70,6 +71,29 @@ export const areas: Area[] = [
       "Technologie cyfrowe",
       "Kompetencje przyszłości",
       "Innowacje"
+    ],
+    "facilities": [
+      {
+        "title": "Tarnow Tech Community",
+        "body": [
+          "Wspieramy Tarnow Tech Community, która rozwija lokalny ekosystem innowacji i łączy osoby związane z technologią, IT i nowoczesnym biznesem."
+        ],
+        "logo": "/images/logo-ttc.png",
+        "logoWidth": 800,
+        "logoHeight": 290,
+        "subtitle": "Tarnowska społeczność IT, technologii i biznesu",
+        "event": {
+          "label": "Najbliższe spotkanie",
+          "title": "Warsztaty tworzenia agentów AI",
+          "body": [
+            "20 października 2026 r. w Akademii Tarnowskiej odbędą się praktyczne warsztaty pracy z Google Antigravity i tworzenia własnych agentów AI. Wymagane są wcześniejsze doświadczenie w programowaniu oraz własny laptop z zasilaczem."
+          ],
+          "details": "📍 Budynek C, sala C06 · Start: 18:00, rejestracja od 17:30",
+          "note": "Wstęp bezpłatny, liczba miejsc ograniczona — obowiązuje wcześniejsze pobranie biletu.",
+          "cta": "Zobacz szczegóły i pobierz bilet",
+          "href": "https://luma.com/7g61d94h"
+        }
+      }
     ]
   },
   {

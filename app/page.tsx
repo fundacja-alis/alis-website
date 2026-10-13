@@ -130,7 +130,7 @@ export default function Home() {
                   </ul>
                 </div>
                 {area.facilities && <div className="facility-list">
-                  {area.facilities.map((facility) => <details className="facility-item" key={facility.href}>
+                  {area.facilities.map((facility) => <details className="facility-item" key={facility.title}>
                     <summary className="facility-summary">
                       <span className="facility-logo"><Image src={facility.logo} alt="" width={facility.logoWidth} height={facility.logoHeight} sizes="(max-width: 560px) 88px, 160px" /></span>
                       <span className="facility-label"><span className="facility-title">{facility.title}</span><span className="facility-subtitle">{facility.subtitle}</span></span>
@@ -138,7 +138,15 @@ export default function Home() {
                     </summary>
                     <div className="facility-content">
                       {facility.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                      <a className="text-link" href={facility.href} target="_blank" rel="noopener noreferrer">{facility.cta} <span className="sr-only">(otwiera nową kartę)</span><Arrow /></a>
+                      {facility.href && <a className="text-link" href={facility.href} target="_blank" rel="noopener noreferrer">{facility.cta} <span className="sr-only">(otwiera nową kartę)</span><Arrow /></a>}
+                      {facility.event && <div className="facility-event">
+                        <p className="facility-event-label">{facility.event.label}</p>
+                        <h4>{facility.event.title}</h4>
+                        {facility.event.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                        <p className="facility-event-details">{facility.event.details}</p>
+                        <p>{facility.event.note}</p>
+                        {facility.event.href && <a className="text-link" href={facility.event.href} target="_blank" rel="noopener noreferrer">{facility.event.cta} <span className="sr-only">(otwiera nową kartę)</span><Arrow /></a>}
+                      </div>}
                     </div>
                   </details>)}
                 </div>}
